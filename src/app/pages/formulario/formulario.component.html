@@ -1,0 +1,58 @@
+<mat-card class="card">
+    <form class="form" id="form">
+        <div>
+            <mat-form-field appearance="fill" class="input-nome" id="input-nome">
+                <mat-label>Nome: </mat-label>
+                <input matInput type="text" name="nome-pessoa" [formControl]="nomeFormControl"
+                    [(ngModel)]="pessoa.nome" />
+
+                <mat-error *ngIf="nomeFormControl.hasError('required')">
+                    Por favor, preencha seu nome
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="input-tel" id="input-tel">
+                <mat-label> Telefone:</mat-label>
+                <input matInput placeholder="(XX) XXXXX-XXXX" name="telefone-pessoa" [formControl]="telefoneFormControl"
+                    [(ngModel)]="pessoa.telefone" />
+
+                <mat-error *ngIf="telefoneFormControl.hasError('required')">
+                    Por favor, preencha seu telefone
+                </mat-error>
+
+            </mat-form-field>
+        </div>
+
+        <div class="form-botoes">
+            <button mat-raised-button id="btn-limpar" color="warn" type="reset"> Limpar </button>
+            <button mat-raised-button id="btn-salvar" color="primary" type="submit" (click)="salvar()"> Salvar </button>
+        </div>
+    </form>
+</mat-card>
+
+<mat-card class="card">
+    <table mat-table [dataSource]="dataSourcePessoas" matSort (matSortChange)="sortData($event)"
+        class="mat-elevation-z8">
+
+        <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cabecalho-tabela"> Código </th>
+            <td mat-cell *matCellDef="let pessoa"> {{ pessoa.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cabecalho-tabela"> Nome </th>
+            <td mat-cell *matCellDef="let pessoa"> {{ pessoa.nome }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="cabecalho-tabela"> Telefone </th>
+            <td mat-cell *matCellDef="let pessoa"> {{ pessoa.telefone }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</mat-card>

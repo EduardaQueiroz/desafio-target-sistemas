@@ -1,0 +1,24 @@
+{
+  "pessoas": [
+    {
+      "nome": "Eduarda",
+      "telefone": "87",
+      "id": 1
+    },
+    {
+      "nome": "Mozao",
+      "telefone": "12",
+      "id": 2
+    },
+    {
+      "nome": "Mozao",
+      "telefone": "89",
+      "id": 3
+    },
+    {
+      "nome": "fe",
+      "telefone": "12",
+      "id": 4
+    }
+  ]
+}
